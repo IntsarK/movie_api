@@ -1,7 +1,9 @@
-const express = require("express");
+const express = require("express"),
+  morgan = require("morgan");
+
 const app = express();
 
-let topBooks = [
+let topMovies = [
   {
     title: "Harry Potter and the Sorcerer's Stone",
     author: "J.K. Rowling",
@@ -16,17 +18,22 @@ let topBooks = [
   },
 ];
 
+app.use(morgan("common"));
+
+app.use(express.static("public"));
+
 // GET requests
 app.get("/", (req, res) => {
-  res.send("Welcome to my book club!");
+  res.send("Welcome to myFlix API!");
 });
 
-app.get("/documentation", (req, res) => {
-  res.sendFile("public/documentation.html", { root: __dirname });
+app.get("/movies", (req, res) => {
+  res.json(topMovies);
 });
 
-app.get("/books", (req, res) => {
-  res.json(topBooks);
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
 });
 
 // listen for requests
