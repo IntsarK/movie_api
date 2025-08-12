@@ -1,123 +1,127 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Movie API</title>
-</head>
-<body>
-  <h1>Movie API</h1>
-  <p>This API provides information about movies, directors, and genres. It is designed to support a client-side application that lets users browse movies, view details, and manage their favorite films.</p>
+  <head>
+    <title>Movie API</title>
+  </head>
+  <body>
+    <h1>Movie API</h1>
+    <p>
+      This API provides information about movies, directors, and genres. It is
+      designed to support a client-side application that lets users browse
+      movies, view details, and manage their favorite films.
+    </p>
 
-  <h2>API Endpoints</h2>
-  <table border="1" cellpadding="5">
-    <tr>
-      <th>Request</th>
-      <th>URL</th>
-      <th>Method</th>
-      <th>Description</th>
-      <th>Query Parameters</th>
-      <th>Request Body</th>
-      <th>Response</th>
-    </tr>
+    <h2>API Endpoints</h2>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Request</th>
+        <th>URL</th>
+        <th>Method</th>
+        <th>Description</th>
+        <th>Query Parameters</th>
+        <th>Request Body</th>
+        <th>Response</th>
+      </tr>
 
-    <tr>
-      <td>Get all movies</td>
-      <td>/movies</td>
-      <td>GET</td>
-      <td>Returns a list (array) of all movies in JSON format</td>
-      <td>None</td>
-      <td>None</td>
-      <td>JSON array of movie objects</td>
-    </tr>
+      <tr>
+        <td>Get all movies</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>Returns a list (array) of all movies in JSON format</td>
+        <td>None</td>
+        <td>None</td>
+        <td>JSON array of movie objects</td>
+      </tr>
 
-    <tr>
-      <td>Get single movie by title</td>
-      <td>/movies/:title</td>
-      <td>GET</td>
-      <td>Returns JSON with details for that movie (description, genre, director, image URL, featured)</td>
-      <td>title - movie title in URL path</td>
-      <td>None</td>
-      <td>JSON object with movie details</td>
-    </tr>
+      <tr>
+        <td>Get single movie by title</td>
+        <td>/movies/:title</td>
+        <td>GET</td>
+        <td>
+          Returns JSON with details for that movie (description, genre,
+          director, image URL, featured)
+        </td>
+        <td>title - movie title in URL path</td>
+        <td>None</td>
+        <td>JSON object with movie details</td>
+      </tr>
 
-    <tr>
-      <td>Get genre info by name</td>
-      <td>/genres/:name</td>
-      <td>GET</td>
-      <td>Returns JSON with the genre’s name and description</td>
-      <td>name - genre name in URL path</td>
-      <td>None</td>
-      <td>JSON object with genre details</td>
-    </tr>
+      <tr>
+        <td>Get genre info by name</td>
+        <td>/genres/:name</td>
+        <td>GET</td>
+        <td>Returns JSON with the genre’s name and description</td>
+        <td>name - genre name in URL path</td>
+        <td>None</td>
+        <td>JSON object with genre details</td>
+      </tr>
 
-    <tr>
-      <td>Get director info by name</td>
-      <td>/directors/:name</td>
-      <td>GET</td>
-      <td>Returns JSON with director’s bio, birth year, death year</td>
-      <td>name - director name in URL path</td>
-      <td>None</td>
-      <td>JSON object with director details</td>
-    </tr>
+      <tr>
+        <td>Get director info by name</td>
+        <td>/directors/:name</td>
+        <td>GET</td>
+        <td>Returns JSON with director’s bio, birth year, death year</td>
+        <td>name - director name in URL path</td>
+        <td>None</td>
+        <td>JSON object with director details</td>
+      </tr>
 
-    <tr>
-      <td>Register a new user</td>
-      <td>/users</td>
-      <td>POST</td>
-      <td>Creates a new user account</td>
-      <td>None</td>
-      <td>
-        {
-          "username": "sara",
-          "email": "sara@example.com",
-          "password": "password123"
-        }
-      </td>
-      <td>Confirmation message and JSON with created user info</td>
-    </tr>
+      <tr>
+        <td>Register a new user</td>
+        <td>/users</td>
+        <td>POST</td>
+        <td>Creates a new user account</td>
+        <td>None</td>
+        <td>
+          { "username": "sara", "email": "sara@example.com", "password":
+          "password123" }
+        </td>
+        <td>Confirmation message and JSON with created user info</td>
+      </tr>
 
-    <tr>
-      <td>Update a user’s info</td>
-      <td>/users/:username</td>
-      <td>PUT</td>
-      <td>Updates user’s username</td>
-      <td>username - current username in URL path</td>
-      <td>
-        {
-          "username": "newusername"
-        }
-      </td>
-      <td>Confirmation message that user info was updated</td>
-    </tr>
+      <tr>
+        <td>Update a user’s info</td>
+        <td>/users/:username</td>
+        <td>PUT</td>
+        <td>Updates user’s username</td>
+        <td>username - current username in URL path</td>
+        <td>{ "username": "newusername" }</td>
+        <td>Confirmation message that user info was updated</td>
+      </tr>
 
-    <tr>
-      <td>Add a movie to favorites</td>
-      <td>/users/:username/favorites/:movieId</td>
-      <td>POST</td>
-      <td>Adds a movie to user's favorites list</td>
-      <td>username - user’s username<br>movieId - movie's ID in URL path</td>
-      <td>None</td>
-      <td>Text message confirming movie was added</td>
-    </tr>
+      <tr>
+        <td>Add a movie to favorites</td>
+        <td>/users/:username/favorites/:movieId</td>
+        <td>POST</td>
+        <td>Adds a movie to user's favorites list</td>
+        <td>
+          username - user’s username<br />movieId - movie's ID in URL path
+        </td>
+        <td>None</td>
+        <td>Text message confirming movie was added</td>
+      </tr>
 
-    <tr>
-      <td>Remove a movie from favorites</td>
-      <td>/users/:username/favorites/:movieId</td>
-      <td>DELETE</td>
-      <td>Removes a movie from user's favorites list</td>
-      <td>username - user’s username<br>movieId - movie's ID in URL path</td>
-      <td>None</td>
-      <td>Text message confirming movie was removed</td>
-    </tr>
+      <tr>
+        <td>Remove a movie from favorites</td>
+        <td>/users/:username/favorites/:movieId</td>
+        <td>DELETE</td>
+        <td>Removes a movie from user's favorites list</td>
+        <td>
+          username - user’s username<br />movieId - movie's ID in URL path
+        </td>
+        <td>None</td>
+        <td>Text message confirming movie was removed</td>
+      </tr>
 
-    <tr>
-      <td>Deregister a user</td>
-      <td>/users/:username</td>
-      <td>DELETE</td>
-      <td>Deletes a user account</td>
-      <td>username - user’s username in URL path</td>
-      <td>None</td>
-      <td>Text message confirming user deregistration</td>
-    </tr>
-  </table>
-</body>
+      <tr>
+        <td>Deregister a user</td>
+        <td>/users/:username</td>
+        <td>DELETE</td>
+        <td>Deletes a user account</td>
+        <td>username - user’s username in URL path</td>
+        <td>None</td>
+        <td>Text message confirming user deregistration</td>
+      </tr>
+    </table>
+  </body>
 </html>
