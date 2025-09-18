@@ -30,7 +30,22 @@
         <td>Returns a list (array) of all movies in JSON format</td>
         <td>None</td>
         <td>None</td>
-        <td>JSON array of movie objects</td>
+        <td>
+          <pre>
+[
+  {
+    "_id": "12345",
+    "Title": "Inception",
+    "Description": "A mind-bending thriller",
+    "Genre": { "Name": "Thriller", "Description": "Exciting and suspenseful" },
+    "Director": { "Name": "Christopher Nolan", "Bio": "British director" },
+    "Actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
+    "ImagePath": "/images/inception.jpg",
+    "Featured": true
+  }
+]</pre
+          >
+        </td>
       </tr>
 
       <tr>
@@ -43,7 +58,20 @@
         </td>
         <td>title - movie title in URL path</td>
         <td>None</td>
-        <td>JSON object with movie details</td>
+        <td>
+          <pre>
+{
+  "_id": "12345",
+  "Title": "Inception",
+  "Description": "A mind-bending thriller",
+  "Genre": { "Name": "Thriller", "Description": "Exciting and suspenseful" },
+  "Director": { "Name": "Christopher Nolan", "Bio": "British director" },
+  "Actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
+  "ImagePath": "/images/inception.jpg",
+  "Featured": true
+}</pre
+          >
+        </td>
       </tr>
 
       <tr>
@@ -53,7 +81,14 @@
         <td>Returns JSON with the genre’s name and description</td>
         <td>name - genre name in URL path</td>
         <td>None</td>
-        <td>JSON object with genre details</td>
+        <td>
+          <pre>
+{
+  "Name": "Thriller",
+  "Description": "Exciting and suspenseful"
+}</pre
+          >
+        </td>
       </tr>
 
       <tr>
@@ -63,7 +98,14 @@
         <td>Returns JSON with director’s bio, birth year, death year</td>
         <td>name - director name in URL path</td>
         <td>None</td>
-        <td>JSON object with director details</td>
+        <td>
+          <pre>
+{
+  "Name": "Christopher Nolan",
+  "Bio": "British director"
+}</pre
+          >
+        </td>
       </tr>
 
       <tr>
@@ -73,44 +115,95 @@
         <td>Creates a new user account</td>
         <td>None</td>
         <td>
-          { "username": "sara", "email": "sara@example.com", "password":
-          "password123" }
+          <pre>
+{
+  "Username": "Sara",
+  "Password": "123",
+  "Email": "sara@example.com",
+  "Birthday": "1990-01-01"
+}</pre
+          >
         </td>
-        <td>Confirmation message and JSON with created user info</td>
+        <td>
+          <pre>
+{
+  "_id": "67890",
+  "Username": "Sara",
+  "Email": "sara@example.com",
+  "Birthday": "1990-01-01",
+  "FavoriteMovies": []
+}</pre
+          >
+        </td>
       </tr>
 
       <tr>
         <td>Update a user’s info</td>
         <td>/users/:username</td>
         <td>PUT</td>
-        <td>Updates user’s username</td>
+        <td>Updates user info (username, password, email, birthday)</td>
         <td>username - current username in URL path</td>
-        <td>{ "username": "newusername" }</td>
-        <td>Confirmation message that user info was updated</td>
+        <td>
+          <pre>
+{
+  "Username": "SaraUpdated",
+  "Password": "newpassword",
+  "Email": "newemail@example.com",
+  "Birthday": "1990-01-01"
+}</pre
+          >
+        </td>
+        <td>
+          <pre>
+{
+  "_id": "67890",
+  "Username": "SaraUpdated",
+  "Email": "newemail@example.com",
+  "Birthday": "1990-01-01",
+  "FavoriteMovies": []
+}</pre
+          >
+        </td>
       </tr>
 
       <tr>
         <td>Add a movie to favorites</td>
-        <td>/users/:username/favorites/:movieId</td>
+        <td>/users/:username/movies/:movieId</td>
         <td>POST</td>
         <td>Adds a movie to user's favorites list</td>
         <td>
           username - user’s username<br />movieId - movie's ID in URL path
         </td>
         <td>None</td>
-        <td>Text message confirming movie was added</td>
+        <td>
+          <pre>
+{
+  "_id": "67890",
+  "Username": "Sara",
+  "FavoriteMovies": ["12345"]
+}</pre
+          >
+        </td>
       </tr>
 
       <tr>
         <td>Remove a movie from favorites</td>
-        <td>/users/:username/favorites/:movieId</td>
+        <td>/users/:username/movies/:movieId</td>
         <td>DELETE</td>
         <td>Removes a movie from user's favorites list</td>
         <td>
           username - user’s username<br />movieId - movie's ID in URL path
         </td>
         <td>None</td>
-        <td>Text message confirming movie was removed</td>
+        <td>
+          <pre>
+{
+  "_id": "67890",
+  "Username": "Sara",
+  "FavoriteMovies": []
+}</pre
+          >
+        </td>
       </tr>
 
       <tr>
@@ -120,7 +213,9 @@
         <td>Deletes a user account</td>
         <td>username - user’s username in URL path</td>
         <td>None</td>
-        <td>Text message confirming user deregistration</td>
+        <td>
+          <pre>User deleted successfully</pre>
+        </td>
       </tr>
     </table>
   </body>
